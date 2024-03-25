@@ -111,7 +111,7 @@ function getAllOrNothing(promises) {
  * [Promise.resolve(1), Promise.reject(2), Promise.resolve(3)]  => Promise fulfilled with [1, null, 3]
  */
 function getAllResult(promises) {
-  return Promise.allSettled(promises);
+  return Promise.all(promises.map((promise) => promise.catch(() => null)));
 }
 
 /**
